@@ -1,1 +1,42 @@
 
+import re
+
+contacts = [
+    {"name": "Dr Ravi", "phone": "+91 98400 12345", "email": "ravi@gmail.com"},
+    {"name": "Ravi Kumar", "phone": "9840012345", "email": "ravi@gmail.com"},
+    {"name": "John", "phone": "9876543210", "email": "john@gmail.com"},
+    {"name": "Dr. Ravi", "phone": "98400-12345", "email": "ravi@yahoo.com"},
+    {"name": "Priya", "phone": "9876501234", "email": "priya@gmail.com"}
+]
+
+merged = {}
+
+for contact in contacts:
+    phone = contact["phone"]
+
+    # Normalize phone number
+    number = re.sub(r'\D', '', phone)
+    if number.startswith("91") and len(number) == 12:
+        number = number[2:]
+
+    if number not in merged:
+        merged[number] = {
+            "names": set(),
+            "phones": set(),
+            "emails": set()
+        }
+
+    merged[number]["names"].add(contact["name"])
+    merged[number]["phones"].add(phone)
+
+    if contact["email"]:
+        merged[number]["emails"].add(contact["email"])
+print("MERGED CONTACTS")
+
+for number, details in merged.items():
+    print("\nNames:", details["names"])
+    print("Phones:", details["phones"])
+    print("Emails:", details["emails"])
+
+print("\nTotal contacts:", len(merged))
+
