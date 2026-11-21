@@ -1,1 +1,27 @@
 
+n = int(input("Enter number of farmers: "))
+
+for i in range(n):
+    print("\nFarmer", i + 1)
+
+    fat = float(input("Enter Fat: "))
+    snf = float(input("Enter SNF: "))
+    litres = float(input("Enter Litres: "))
+
+    rate = 32.00 + (fat * 0.45)
+
+    if litres > 500:
+        bonus = 0.50
+    else:
+        bonus = 0.00
+
+    final_rate = rate + bonus
+    amount = litres * final_rate
+
+    print("Fat:", format(fat, ".2f"))
+    print("SNF:", format(snf, ".2f"))
+    print("Final Rate: Rs.", format(final_rate, ".2f"))
+    print("Total Amount: Rs.", format(amount, ".2f"))
+
+print("\nAll farmers processed successfully!")
+
