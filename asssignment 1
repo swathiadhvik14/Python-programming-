@@ -1,1 +1,18 @@
-
+fat = float(input("Enter Fat value: "))
+snf = float(input("Enter SNF value: "))
+litres = float(input("Enter total litres supplied in 10 days: "))
+print("\nMilk Analyzer Report")
+print("Fat:", format(fat, ".2f"))
+print("SNF:", format(snf, ".2f"))
+base_rate = 32.00
+fat_rate = 0.45
+rate = base_rate + (fat * fat_rate)
+if litres > 500:
+    bonus = 0.50
+final_rate = rate + bonus
+total_amount = litres * final_rate
+print("\nBase Rate: Rs.", format(base_rate, ".2f"))
+print("Milk Rate: Rs.", format(rate, ".2f"))
+print("Bonus per litre: Rs.", format(bonus, ".2f"))
+print("Final Rate: Rs.", format(final_rate, ".2f"))
+print("Total Amount: Rs.", format(total_amount, ".2f"))
